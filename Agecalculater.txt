@@ -1,0 +1,29 @@
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class AgeCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the user's birthdate
+        System.out.print("Enter your birthdate (yyyy-MM-dd): ");
+        String inputDate = scanner.nextLine();
+
+        // Parse the input date using the specified format
+        LocalDate birthdate = LocalDate.parse(inputDate, DateTimeFormatter.ISO_LOCAL_DATE);
+
+        // Calculate the age based on the current date
+        LocalDate currentDate = LocalDate.now();
+        Period age = Period.between(birthdate, currentDate);
+
+        // Display the calculated age
+        System.out.println("Your age is: " + age.getYears() + " years, " + age.getMonths() + " months, " + age.getDays() + " days.");
+
+        scanner.close();
+    }
+}
+OUTPUT:
+Enter your birthdate (yyyy-MM-dd): 1982-11-05
+Your age is: 40 years, 6 months, 19 days.
